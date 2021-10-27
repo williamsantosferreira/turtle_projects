@@ -1,0 +1,2 @@
+teste
+-DCATKIN_DEVEL_PREFIX=/home/pd/Desktop/workspace/devel -DCMAKE_INSTALL_PREFIX=/home/pd/Desktop/workspace/install -G Unix Makefiles

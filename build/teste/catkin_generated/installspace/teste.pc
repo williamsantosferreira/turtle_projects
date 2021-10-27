@@ -1,0 +1,8 @@
+prefix=/home/pd/Desktop/workspace/install
+
+Name: teste
+Description: Description of teste
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/pd/Desktop/workspace/install/lib 
+Requires: 
