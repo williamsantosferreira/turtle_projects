@@ -5,13 +5,23 @@
 #include <cmath>
 #include <vector>
 
-float x,y,w,vel_x;
+
+float x,y,w,theta,vel_x;
 int contador = 0;
+
+	
 
 void take_pose(const turtlesim::Pose::ConstPtr& pose){
 	float dx,dy,theta,e_x,e_y,k,dtheta;
 	float x_pos[]={5,8,8,5};
 	float y_pos[]={5,5,2,2};
+
+	x = pose->x;
+	y = pose->y;
+	theta = pose->theta;
+
+	vel_x = pose->linear_velocity;
+	w = pose->angular_velocity;
 
 
 	k = 10;
@@ -41,6 +51,8 @@ void take_pose(const turtlesim::Pose::ConstPtr& pose){
 
 }
 
+
+
 int main(int argc, char** argv){
 	ros::init(argc,argv,"turtle_sim_control");
 
@@ -51,13 +63,21 @@ int main(int argc, char** argv){
 	ros::Rate freq(10);
 
 	geometry_msgs::Twist vel;
+
 	
-	
+
 	while(ros::ok()){
+		
+				
 		vel.angular.z = w;
 		vel.linear.x = vel_x;
 		pub.publish(vel);
-	
+
+		
+		
+		
+
+
 
 		freq.sleep();
 		ros::spinOnce();

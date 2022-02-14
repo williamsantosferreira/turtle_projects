@@ -10,6 +10,9 @@ project(teste)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  geometry_msgs
+  nav_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -133,7 +136,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/teste_node.cpp)
-add_executable(turtle_sim_control src/turtle_sim_control.cpp)
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -149,7 +152,7 @@ add_executable(turtle_sim_control src/turtle_sim_control.cpp)
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(turtle_sim_control ${catkin_LIBRARIES})
+
 
 
 
@@ -200,3 +203,12 @@ target_link_libraries(turtle_sim_control ${catkin_LIBRARIES})
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(turtle_sim_control src/turtle_sim_control.cpp)
+target_link_libraries(turtle_sim_control ${catkin_LIBRARIES})
+
+add_executable(tf_broadcaster src/tf_broadcaster.cpp)
+target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
+
+add_executable(tf_odometry src/tf_odometry.cpp)
+target_link_libraries(tf_odometry ${catkin_LIBRARIES})
